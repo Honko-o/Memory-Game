@@ -1,0 +1,110 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.control-buttons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    background-color: rgb(52 152 219 / 90%);
+    transition: 1s opacity;
+}
+
+.control-buttons.hidden {
+    opacity: 0;
+}
+
+.control-buttons span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #e74c3c;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.3s background-color;
+}
+
+.control-buttons span:hover {
+    background-color: #c0392b;
+}
+
+.info-container {
+    width: 80%;
+    padding: 20px;
+    margin: 10px auto 0;
+    border: 2px solid #3498db;
+    background-color: #f6f6f6;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.memory-game-images {
+    width: 80%;
+    margin: 20px auto 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.memory-game-images.stop-clicking {
+    pointer-events: none;
+}
+
+.memory-game-images .game-image {
+    height: 200px;
+    transition: transform 0.5s;
+    transform-style: preserve-3d;
+    cursor: pointer;
+    position: relative;
+    flex: 1 0 200px;
+    margin: 0 10px 20px;
+}
+
+.memory-game-images .game-image.is-flipped,
+.memory-game-images .game-image.is-matched {
+    transform: rotateY(180deg);
+    pointer-events: none;
+}
+
+.memory-game-images .game-image .front {
+    background-color: #333;
+    line-height: 200px;
+}
+
+.memory-game-images .game-image .front:before {
+    content: '!';
+    color: white;
+    font-size: 8rem;
+    font-weight: bold;
+}
+
+.memory-game-images .game-image .back {
+    background-color: #607d8b;
+    transform: rotateY(180deg);
+}
+
+.memory-game-images .game-image .back img {
+    width: 140px;
+    height: 140px;
+    margin-top: 30px;
+}
+
+.memory-game-images .game-image .face {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    position: absolute;
+    backface-visibility: hidden;
+    border: 5px solid #3498db;
+}
