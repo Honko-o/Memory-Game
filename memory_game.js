@@ -6,13 +6,14 @@ const tries = document.querySelector('.tries span');
 const duration = 1000;
 const gameImages = Array.from(document.querySelectorAll('.game-image'));
 const gameImagesIndexes = [...gameImages.keys()];
+let wrongTries = 0;
 
 const startGame = () => {
     startGameContainer.classList.add('hidden');
 
     const playerName = window.prompt('Please Enter Your Name');
     if (playerName === '' || playerName === null) {
-        playerNameField.innerText = 'MotherFucker';
+        playerNameField.innerText = 'Unknown';
     } else {
         playerNameField.innerText = playerName;
     }
@@ -36,6 +37,8 @@ const checkMatchedImages = (imageOne, imageTwo) => {
         imageOne.classList.add('is-matched');
         imageTwo.classList.add('is-matched');
     } else {
+        wrongTries++;
+        tries.innerHTML = wrongTries;
         setTimeout(() => {
             imageOne.classList.remove('is-flipped');
             imageTwo.classList.remove('is-flipped');
